@@ -1,7 +1,10 @@
 import 'package:chikitsa_assign/gen/assets.gen.dart';
+import 'package:chikitsa_assign/presentation/screens/navbar/view.dart';
 import 'package:chikitsa_assign/presentation/screens/sign_in/bloc.dart';
 import 'package:chikitsa_assign/presentation/screens/sign_in/event.dart';
 import 'package:chikitsa_assign/presentation/screens/sign_in/state.dart';
+
+import 'package:chikitsa_assign/ui_components/reportScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -62,130 +65,136 @@ class Page extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 80),
-            Center(
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 36,
-                    backgroundColor: Colors.blue[100],
-                    child: Icon(Icons.local_hospital,
-                        size: 36, color: Colors.blue),
-                  ),
-                  const SizedBox(height: 8),
-                  const Text(
-                    'Adhicine',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.blue,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 40),
-            const Text(
-              'Sign In',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 28,
-              ),
-            ),
-            const SizedBox(height: 24),
-            TextField(
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.email, color: Colors.teal),
-                labelText: 'Email',
-                errorText: 'Incorrect Email Address',
-              ),
-            ),
-            const SizedBox(height: 16),
-            TextFormField(
-              obscureText: true,
-              decoration: InputDecoration(
-                disabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                prefixIcon: Icon(Icons.lock, color: Colors.teal),
-                labelText: 'Password',
-                suffixIcon: Icon(Icons.visibility_off),
-              ),
-            ),
-            const SizedBox(height: 8),
-            Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                onPressed: () {},
-                child: const Text('Forgot Password?'),
-              ),
-            ),
-            const SizedBox(height: 24),
-            SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(22),
-                  ),
-                ),
-                onPressed: () {},
-                child: const Text('Sign In',
-                    style: TextStyle(color: Colors.white)),
-              ),
-            ),
-            const SizedBox(height: 16),
-            const Row(
-              children: [
-                Expanded(child: Divider()),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12),
-                  child: Text('OR'),
-                ),
-                Expanded(child: Divider()),
-              ],
-            ),
-            const SizedBox(height: 16),
-            Container(
-              width: double.infinity,
-              height: 50,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(22),
-              ),
-              child: OutlinedButton.icon(
-                onPressed: () {},
-                icon: SvgPicture.asset(Assets.googleLogo),
-                label: const Text('Continue with Google'),
-                style: OutlinedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 24),
-            Center(
-              child: RichText(
-                text: TextSpan(
-                  text: 'New to Adhicine? ',
-                  style: const TextStyle(color: Colors.black),
+        child: InkWell(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => const NavbarPage()));
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 80),
+              Center(
+                child: Column(
                   children: [
-                    TextSpan(
-                      text: 'Sign Up',
-                      style: const TextStyle(
-                          color: Colors.blue, fontWeight: FontWeight.bold),
+                    CircleAvatar(
+                      radius: 36,
+                      backgroundColor: Colors.blue[100],
+                      child: Icon(Icons.local_hospital,
+                          size: 36, color: Colors.blue),
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'Adhicine',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.blue,
+                      ),
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 40),
+              const Text(
+                'Sign In',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28,
+                ),
+              ),
+              const SizedBox(height: 24),
+              TextField(
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.email, color: Colors.teal),
+                  labelText: 'Email',
+                  errorText: 'Incorrect Email Address',
+                ),
+              ),
+              const SizedBox(height: 16),
+              TextFormField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  disabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  prefixIcon: Icon(Icons.lock, color: Colors.teal),
+                  labelText: 'Password',
+                  suffixIcon: Icon(Icons.visibility_off),
+                ),
+              ),
+              const SizedBox(height: 8),
+              Align(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {},
+                  child: const Text('Forgot Password?'),
+                ),
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(22),
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: const Text('Sign In',
+                      style: TextStyle(color: Colors.white)),
+                ),
+              ),
+              const SizedBox(height: 16),
+              const Row(
+                children: [
+                  Expanded(child: Divider()),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    child: Text('OR'),
+                  ),
+                  Expanded(child: Divider()),
+                ],
+              ),
+              const SizedBox(height: 16),
+              Container(
+                width: double.infinity,
+                height: 50,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(22),
+                ),
+                child: OutlinedButton.icon(
+                  onPressed: () {},
+                  icon: SvgPicture.asset(Assets.googleLogo),
+                  label: const Text('Continue with Google'),
+                  style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
+              Center(
+                child: RichText(
+                  text: TextSpan(
+                    text: 'New to Adhicine? ',
+                    style: const TextStyle(color: Colors.black),
+                    children: [
+                      TextSpan(
+                        text: 'Sign Up',
+                        style: const TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

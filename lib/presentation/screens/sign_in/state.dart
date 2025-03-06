@@ -17,6 +17,15 @@ class SignInState extends Equatable {
     );
   }
 
+/*************  ✨ Codeium Command ⭐  *************/
+/// Creates a copy of the current `SignInState` with updated fields.
+/// 
+/// If a non-null `status` is provided, it will replace the current status.
+/// Otherwise, the existing status will be used.
+/// 
+/// Returns a new instance of `SignInState`.
+
+/******  1f53881d-8c54-4681-85a0-a90ee27af0cb  *******/
   SignInState clone({
     SignInStatus? status
   }) {
