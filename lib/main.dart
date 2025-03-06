@@ -1,6 +1,8 @@
 
 import 'package:chikitsa_assign/presentation/resources/router/route_manager.dart';
 import 'package:chikitsa_assign/presentation/resources/theme/theme_manager.dart';
+import 'package:chikitsa_assign/presentation/screens/home/bloc.dart';
+import 'package:chikitsa_assign/presentation/screens/home/event.dart' as home;
 import 'package:chikitsa_assign/presentation/screens/sign_in/bloc.dart';
 import 'package:chikitsa_assign/presentation/screens/sign_in/event.dart';
 import 'package:flutter/material.dart';
@@ -28,12 +30,14 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => SignInBloc()..add(InitEvent()))
+        BlocProvider(create: (_) => SignInBloc()..add(InitEvent())),
+        BlocProvider(create: (_) => HomeBloc()..add(home.InitEvent())),
+        
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: Routes.signInPage,
+        initialRoute: Routes.homePage,
         theme: getApplicationTheme(),
       ),
     );
